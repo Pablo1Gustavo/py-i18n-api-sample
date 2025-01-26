@@ -1,18 +1,20 @@
-from typing import Mapping, Any
+from typing import Any, Callable, Mapping, Iterator
+from functools import wraps
 import gettext
 
+from .selector import LanguageSelector, AppLanguage
 from .text import TranslatableStr
 
 class Translator:
     def __init__(
         self,
-        languages: list[str],
+        language: AppLanguage,
         domain: str = "_app",
     ):
         try:
-            self.translation_fn = gettext.translation(domain, "locale", languages)
+            self.translation_fn = gettext.translation(domain, "locale", [language])
         except Exception:
-            print("Translation file not found.")
+            print(f"Translation file not found for domain {domain} and language {language}.")
             self.translation_fn = gettext.NullTranslations()
 
     def translate(self, text: TranslatableStr) -> str:
@@ -23,16 +25,25 @@ class Translator:
         return translated.format(*text.args, **text.kwargs)
     
     def translate_object(self, obj: object) -> Any:
-        match obj:
-            case TranslatableStr():
-                return self.translate(obj)
-            case Mapping():
-                return { key: self.translate_object(value) for key, value in obj.items() }
-            case list():
-                return [self.translate_object(item) for item in obj]
-            case tuple():
-                return tuple(self.translate_object(item) for item in obj)
-            case _:
-                return obj
-            
-global_translator = Translator(["pt-BR"])
+        if isinstance(obj, TranslatableStr):
+            return self.translate(obj)
+        if isinstance(obj, Mapping):
+            return { key: self.translate_object(value) for key, value in obj.items() }
+        if isinstance(obj, Iterator) and not isinstance(obj, str):
+            return [self.translate_object(item) for item in obj]
+        return obj
+
+def translate_return(fn: Callable) -> Callable:
+    @wraps(fn)
+    async def wrapper(*args, **kwargs) -> Any:
+        current_language = LanguageSelector.get_language()
+        translator = Translator(current_language)
+        try:
+            original_return = await fn(*args, **kwargs)
+        except Exception as e:
+            e.message = translator.translate(e.message)
+            e.description = translator.translate(e.description)
+            raise e
+        return translator.translate_object(original_return)
+    
+    return wrapper
