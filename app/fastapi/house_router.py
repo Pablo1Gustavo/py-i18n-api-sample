@@ -8,7 +8,7 @@ from app.text_samples.house import (
     write_house_poem
 )
 
-router = APIRouter(prefix="/house-items")
+router = APIRouter(prefix="/house")
 
 @router.get("/")
 async def house_items():

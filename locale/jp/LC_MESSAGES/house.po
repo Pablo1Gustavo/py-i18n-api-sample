@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-24 16:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "This house item is not allowed"
+msgstr "この家のアイテムは許可されていません"
+
+msgid "The requested house item is either prohibited or unavailable"
+msgstr "リクエストされた家のアイテムは、禁止されているか利用できません"
+
+msgid "Chair"
+msgstr "椅子"
+
+msgid "Table"
+msgstr "テーブル"
+
+msgid "Lamp"
+msgstr "ランプ"
+
+msgid "Sofa"
+msgstr "ソファ"
+
+msgid "Bed"
+msgstr "ベッド"
+
+msgid "Bookshelf"
+msgstr "本棚"
+
+msgid "You ordered {item}"
+msgstr "あなたが注文したのは {item} です"
+
+msgid "Wood"
+msgstr "木材"
+
+msgid "Metal"
+msgstr "金属"
+
+msgid "Fabric"
+msgstr "布"
+
+msgid ""
+"A chair to sit, a bed for dreams,\n"
+"A lamp to light, and books on beams."
+msgstr ""
+"座るための椅子、夢を見るためのベッド、\n"
+"照らすためのランプ、棚に並ぶ本。"

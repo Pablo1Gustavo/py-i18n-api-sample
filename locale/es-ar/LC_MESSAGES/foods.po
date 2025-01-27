@@ -1,0 +1,46 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-24 16:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "This food item is not available"
+msgstr "Este alimento no está disponible"
+
+msgid "The requested food is currently unavailable or restricted"
+msgstr "El alimento solicitado no está disponible actualmente o está restringido"
+
+msgid "Pizza"
+msgstr "Pizza"
+
+msgid "Burger"
+msgstr "Hamburguesa"
+
+msgid "Pasta"
+msgstr "Pasta"
+
+msgid "Salad"
+msgstr "Ensalada"
+
+msgid "Sushi"
+msgstr "Sushi"
+
+msgid "Tacos"
+msgstr "Tacos"
+
+msgid "You ordered {food}"
+msgstr "Has pedido {food}"
+
+msgid ""
+"Pizza is round, tacos are folded,\n"
+"Burgers are tasty, pasta is golden."
+msgstr ""
+"La pizza es redonda, los tacos están doblados,\n"
+"Las hamburguesas son sabrosas, la pasta es dorada."

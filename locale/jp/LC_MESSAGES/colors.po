@@ -1,9 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -43,6 +37,9 @@ msgstr "紫"
 
 msgid "Green"
 msgstr "緑"
+
+msgid "You choose the color {color}"
+msgstr "あなたは色{color}を選びました"
 
 msgid "Rose are red, violets are blue..."
 msgstr "バラは赤、スミレは青..."

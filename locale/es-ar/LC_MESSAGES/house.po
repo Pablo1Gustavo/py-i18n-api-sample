@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-24 16:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "This house item is not allowed"
+msgstr "Este artículo de la casa no está permitido"
+
+msgid "The requested house item is either prohibited or unavailable"
+msgstr "El artículo solicitado para la casa está prohibido o no está disponible"
+
+msgid "Chair"
+msgstr "Silla"
+
+msgid "Table"
+msgstr "Mesa"
+
+msgid "Lamp"
+msgstr "Lámpara"
+
+msgid "Sofa"
+msgstr "Sofá"
+
+msgid "Bed"
+msgstr "Cama"
+
+msgid "Bookshelf"
+msgstr "Estantería"
+
+msgid "You ordered {item}"
+msgstr "Has pedido {item}"
+
+msgid "Wood"
+msgstr "Madera"
+
+msgid "Metal"
+msgstr "Metal"
+
+msgid "Fabric"
+msgstr "Tela"
+
+msgid ""
+"A chair to sit, a bed for dreams,\n"
+"A lamp to light, and books on beams."
+msgstr ""
+"Una silla para sentarse, una cama para soñar,\n"
+"Una lámpara para iluminar y libros para guardar."

@@ -12,34 +12,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Red is not a valid color"
-msgstr "Vermelho não é uma cor válida"
+msgstr "Rojo no es un color válido"
 
 msgid "Red is a primary color"
-msgstr "Vermelho é uma cor primária"
+msgstr "Rojo es un color primario"
 
 msgid "Pink"
 msgstr "Rosa"
 
 msgid "Red"
-msgstr "Vermelho"
+msgstr "Rojo"
 
 msgid "Blue"
 msgstr "Azul"
 
 msgid "Yellow"
-msgstr "Amarelo"
+msgstr "Amarillo"
 
 msgid "Orange"
-msgstr "Laranja"
+msgstr "Naranja"
 
 msgid "Purple"
-msgstr "Roxo"
+msgstr "Púrpura"
 
 msgid "Green"
 msgstr "Verde"
 
 msgid "You choose the color {color}"
-msgstr "Você escolheu a cor {color}"
+msgstr "Elegiste el color {color}"
 
 msgid "Rose are red, violets are blue..."
-msgstr "Rosas são vermelhas, violetas são azuis..."
+msgstr "Las rosas son rojas, las violetas son azules..."
