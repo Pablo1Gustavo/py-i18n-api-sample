@@ -1,45 +1,45 @@
 from dataclasses import dataclass
 
+from app.libs.exception import AppException
+from app.libs.translation.text import TranslatableStr
+
 @dataclass
-class FoodException(Exception):
-    message: str = "This food item is not available"
-    description: str = "The requested food is currently unavailable or restricted"
+class FoodException(AppException):
+    message: str = TranslatableStr("This food item is not available")
+    description: str = TranslatableStr("The requested food is currently unavailable or restricted")
 
 class Food:
     def __init__(self, name: str, calories: int):
         self.name = name
         self.calories = calories
 
-food_item = Food("Pizza", 285)
+food_item = Food(TranslatableStr("Pizza"), 285)
 
 def get_food_items() -> list[str]:
     return [
-        "Pizza",
-        "Burger",
-        "Pasta",
-        "Salad",
-        "Sushi",
-        "Tacos",
+        TranslatableStr("Pizza"),
+        TranslatableStr("Burger"),
+        TranslatableStr("Pasta"),
+        TranslatableStr("Salad"),
+        TranslatableStr("Sushi"),
+        TranslatableStr("Tacos"),
     ]
 
 def dont_serve_sushi(food: str) -> str:
-    if food == "Sushi":
-        raise FoodException(
-            message="Sushi is not served today",
-            description="Try other items on the menu"
-        )
-    return food
+    if food.lower() == "sushi":
+        raise FoodException()
+    return TranslatableStr("You ordered {food}").format(food=food)
 
 def get_food_to_calories_map() -> dict[str, int]:
     return {
-        "Pizza": 285,
-        "Burger": 354,
-        "Pasta": 221,
-        "Salad": 152,
-        "Sushi": 200,
-        "Tacos": 156,
+        TranslatableStr("Pizza"): 285,
+        TranslatableStr("Burger"): 354,
+        TranslatableStr("Pasta"): 221,
+        TranslatableStr("Salad"): 152,
+        TranslatableStr("Sushi"): 200,
+        TranslatableStr("Tacos"): 156,
     }
 
 def write_food_poem() -> str:
-    poem = "Pizza is round, tacos are folded,\nBurgers are tasty, pasta is golden."
+    poem = TranslatableStr("Pizza is round, tacos are folded,\nBurgers are tasty, pasta is golden.")
     return poem

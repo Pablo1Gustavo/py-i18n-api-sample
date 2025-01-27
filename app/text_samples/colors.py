@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 
+from app.libs.exception import AppException
 from app.libs.translation.text import TranslatableStr
 
 @dataclass
-class RedColorException(Exception):
+class RedColorException(AppException):
     message: str = TranslatableStr("Red is not a valid color")
     description: str = TranslatableStr("Red is a primary color")
 
@@ -26,7 +27,7 @@ def get_colors() -> list[str]:
 def dont_get_red(color: str) -> str:
     if color.lower() == "red":
         raise RedColorException()
-    return color
+    return TranslatableStr("You choose the color {color}").format(color=color)
 
 def get_hex_to_colors_map() -> dict[str, str]:
     return {
