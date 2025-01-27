@@ -1,4 +1,4 @@
-from fastapi import APIRouter 
+from flask import Blueprint 
 
 from app.text_samples.colors import (
     color_item,
@@ -8,27 +8,27 @@ from app.text_samples.colors import (
     write_color_poem
 )
 
-router = APIRouter(prefix="/colors")
+colors = Blueprint("colors", __name__, url_prefix="/colors")
 
-@router.route("/")
+@colors.route("/", methods=['GET'])
 async def food_items():
     return get_colors()
 
-@router.route("/item")
+@colors.route("/item", methods=['GET'])
 async def color_class():
     return {
         "name": color_item.name,
         "hex_code": color_item.hex_code
     }
 
-@router.route("/hex")
+@colors.route("/hex", methods=['GET'])
 async def hex_colors():
     return get_hex_to_colors_map()
 
-@router.route("/try/{color}")
+@colors.route("/try/{color}", methods=['GET'])
 async def try_get_color(color: str):
     return dont_get_red(color)
 
-@router.route("/poem")
+@colors.route("/poem", methods=['GET'])
 async def color_poem():
     return write_color_poem()

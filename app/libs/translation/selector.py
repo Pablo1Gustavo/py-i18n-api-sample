@@ -13,7 +13,7 @@ class AppLanguage(StrEnum):
     @staticmethod
     def format_from_header(content: Optional[str]) -> str:
         if not content:
-            return AppLanguage.EN.value
+            return AppLanguage.EN_US.value
         return content.strip().lower().split(",")[0]
 
     @classmethod
@@ -27,7 +27,7 @@ class AppLanguage(StrEnum):
             if app_lang.value.startswith(language.split("-")[0]):
                 return app_lang
             
-        return cls.EN
+        return cls.EN_US
 
 class LanguageSelector(ABC):
     @staticmethod
@@ -38,7 +38,7 @@ class LanguageSelector(ABC):
     @abstractmethod
     def get_language() -> 'AppLanguage': ...
 
-language_ctx = ContextVar("language", default=AppLanguage.EN)
+language_ctx = ContextVar("language", default=AppLanguage.EN_US)
 
 class BaseLanguageSelector(LanguageSelector):    
     @staticmethod
