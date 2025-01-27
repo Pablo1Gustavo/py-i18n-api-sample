@@ -4,13 +4,17 @@ from enum import StrEnum
 
 class AppLanguage(StrEnum):
     PT_BR = "pt-br"
+    ES_AR = "es-ar"
     JP = "jp"
     EN = "en"
 
     @classmethod
     def from_str(cls, language: str):
         for app_lang in cls:
-            if app_lang.value.startswith(language):
+            if app_lang.value == language:
+                return app_lang
+        for app_lang in cls:
+            if app_lang.value.startswith(language.split("-")[0]):
                 return app_lang
         return cls.EN
 
