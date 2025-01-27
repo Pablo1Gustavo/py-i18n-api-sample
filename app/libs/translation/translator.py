@@ -1,9 +1,11 @@
-from typing import Any, Callable, Mapping, Iterator
+from typing import TypeVar, Any, Callable, Mapping, Iterator
 from functools import wraps
 import gettext
 
 from .selector import LanguageSelector, AppLanguage
 from .text import TranslatableStr
+
+T = TypeVar('T')
 
 class Translator:
     def __init__(
@@ -24,11 +26,14 @@ class Translator:
             translated = self.translation_fn.gettext(text)
         return translated.format(*text.args, **text.kwargs)
     
-    def translate_object(self, obj: object) -> Any:
+    def translate_object(self, obj: T) -> T:
         if isinstance(obj, TranslatableStr):
             return self.translate(obj)
         if isinstance(obj, Mapping):
-            return { key: self.translate_object(value) for key, value in obj.items() }
+            return {
+                self.translate_object(key): self.translate_object(value)
+                for key, value in obj.items()
+            }
         if isinstance(obj, Iterator) and not isinstance(obj, str):
             return [self.translate_object(item) for item in obj]
         return obj
