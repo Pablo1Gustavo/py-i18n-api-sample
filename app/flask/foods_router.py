@@ -25,7 +25,7 @@ async def food_item_details():
 async def food_calories():
     return get_food_to_calories_map()
 
-@foods.route("/try/{food}", methods=['GET'])
+@foods.route("/try/<food>", methods=['GET'])
 async def try_get_food(food: str):
     return dont_serve_sushi(food)
 

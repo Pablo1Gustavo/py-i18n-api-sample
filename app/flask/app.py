@@ -1,5 +1,6 @@
 from flask import Flask, request
 
+from app.libs.exception import AppException
 from app.libs.translation.selector import AppLanguage
 from app.libs.translation.flask.flask_language_selector import FlaskLanguageSelector
 from app.libs.translation.translator import translate_return
@@ -23,6 +24,12 @@ async def apply_language():
     client_lang = AppLanguage.from_str(request.headers.get("Accept-Language"))
     FlaskLanguageSelector.set_language(client_lang)
 
+@app.errorhandler(AppException)
+def app_exception_handler(e: AppException):
+    return {
+        "message": e.message,
+        "description": e.description
+    }, 400
 
 @app.route('/', methods=['GET'])
 def test():

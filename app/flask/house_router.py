@@ -25,7 +25,7 @@ async def house_item_details():
 async def item_materials():
     return get_item_to_material_map()
 
-@house.route("/try/{item}", methods=['GET'])
+@house.route("/try/<item>", methods=['GET'])
 async def try_get_item(item: str):
     return dont_allow_lamp(item)
 

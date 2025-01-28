@@ -25,7 +25,7 @@ async def color_class():
 async def hex_colors():
     return get_hex_to_colors_map()
 
-@colors.route("/try/{color}", methods=['GET'])
+@colors.route("/try/<color>", methods=['GET'])
 async def try_get_color(color: str):
     return dont_get_red(color)
 
