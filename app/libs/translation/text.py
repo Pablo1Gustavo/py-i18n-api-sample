@@ -16,10 +16,11 @@ class TranslatableStr(str):
         self.kwargs = kwargs
         return self
 
-# eager translation (startup time)
+# eager translation (startup time or on return if wrapped in a function)
 class StrWithTranslation(TranslatableStr):
     def __new__(
         cls,
+        selector: LanguageSelector,
         text: str,
         plural_form: Optional[str] = None,
         *args,
@@ -30,8 +31,6 @@ class StrWithTranslation(TranslatableStr):
         obj = super().__new__(cls, text, plural_form)
         obj = obj.format(*args, **kwargs)
 
-        print(LanguageSelector.get_language())
-
-        translator = Translator(LanguageSelector.get_language())
+        translator = Translator(selector.get_language())
 
         return translator.translate(obj)
