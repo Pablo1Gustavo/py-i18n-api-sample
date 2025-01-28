@@ -11,13 +11,19 @@ class Translator:
     def __init__(
         self,
         language: AppLanguage,
-        domain: str = "_app",
+        domains: list[str] = ["_app"],
     ):
-        try:
-            self.translation_fn = gettext.translation(domain, "locale", [language])
-        except Exception:
-            print(f"Translation file not found for domain {domain} and language {language}.")
-            self.translation_fn = gettext.NullTranslations()
+        self.translation_fn = gettext.NullTranslations()
+        for domain in domains:
+            try:
+                translation = gettext.translation(
+                    domain,
+                    localedir="locale",
+                    languages=[language.value],
+                )
+                self.translation_fn.add_fallback(translation)
+            except FileNotFoundError as e:
+                print(f"Translation file not found for domain {e.filename} and language {language}.")
 
     def translate(self, text: TranslatableStr) -> str:
         if text.plural_form:
@@ -38,12 +44,15 @@ class Translator:
             return [self.translate_object(item) for item in obj]
         return obj
 
-def translate_return(language_selector: LanguageSelector) -> Callable:
+def translate_return(
+    language_selector: LanguageSelector,
+    domains: list[str] = ["_app"]
+) -> Callable:
     def decorator(fn: Callable) -> Callable:
         @wraps(fn)
         async def wrapper(*args, **kwargs) -> Any:
             current_language = language_selector.get_language()
-            translator = Translator(current_language)
+            translator = Translator(current_language, domains)
             try:
                 original_return = await fn(*args, **kwargs)
             except Exception as e:
