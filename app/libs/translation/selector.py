@@ -40,7 +40,7 @@ class LanguageSelector(ABC):
 
 language_ctx = ContextVar("language", default=AppLanguage.EN_US)
 
-class BaseLanguageSelector(LanguageSelector):    
+class ContextLanguageSelector(LanguageSelector):    
     @staticmethod
     def set_language(language: AppLanguage) -> None:
         language_ctx.set(language)

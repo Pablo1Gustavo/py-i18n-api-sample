@@ -38,17 +38,18 @@ class Translator:
             return [self.translate_object(item) for item in obj]
         return obj
 
-def translate_return(fn: Callable) -> Callable:
-    @wraps(fn)
-    async def wrapper(*args, **kwargs) -> Any:
-        current_language = LanguageSelector.get_language()
-        translator = Translator(current_language)
-        try:
-            original_return = await fn(*args, **kwargs)
-        except Exception as e:
-            e.message = translator.translate(e.message)
-            e.description = translator.translate(e.description)
-            raise e
-        return translator.translate_object(original_return)
-    
-    return wrapper
+def translate_return(language_selector: LanguageSelector) -> Callable:
+    def decorator(fn: Callable) -> Callable:
+        @wraps(fn)
+        async def wrapper(*args, **kwargs) -> Any:
+            current_language = language_selector.get_language()
+            translator = Translator(current_language)
+            try:
+                original_return = await fn(*args, **kwargs)
+            except Exception as e:
+                e.message = translator.translate(e.message)
+                e.description = translator.translate(e.description)
+                raise e
+            return translator.translate_object(original_return)
+        return wrapper
+    return decorator
