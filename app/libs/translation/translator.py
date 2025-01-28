@@ -1,4 +1,4 @@
-from typing import TypeVar, Any, Callable, Mapping, Iterator
+from typing import TypeVar, Any, Callable, Mapping, Iterable
 from functools import wraps
 import gettext
 
@@ -40,7 +40,7 @@ class Translator:
                 self.translate_object(key): self.translate_object(value)
                 for key, value in obj.items()
             }
-        if isinstance(obj, Iterator) and not isinstance(obj, str):
+        if isinstance(obj, Iterable) and not isinstance(obj, str):
             return [self.translate_object(item) for item in obj]
         return obj
 
